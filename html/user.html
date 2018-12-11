@@ -1,0 +1,1311 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<title>관리자 페이지</title>
+<link rel="stylesheet"
+	href="https://ssl.pstatic.net/t.static.blog/mylog/versioning//css/admin/blogadmin-11c3bb7_https.css"
+	type="text/css" />
+
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/lib/jindo/1.5.2/jindo.all-4ca233c_https.js"
+	charset="UTF-8"></script>
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/lib/jindo/agent.ie11/agent.ie11-6694cec_https.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/jindo/jindo.Component-c10fdb8_https.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/jindo/jindo.UIComponent-36c0ca7_https.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/jindo/jindo.Timer-30c3e89_https.js"></script>
+<script type="text/javascript" language="javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/jindo/jindo.LayerManager-aae3a13_https.js"></script>
+
+<script type="text/javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/js/common-8dd0bab_https.js"></script>
+<script type="text/javascript">
+	var LH = new LH_create();
+	window.onload = LH_exec;
+</script>
+<script type="text/javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/util-28777a5_https.js"></script>
+<script type="text/javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning/EasyMakeBlog-492528380_https.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/AdminMain-a472db5_https.js"
+	charset="UTF-8"></script>
+<script type="text/javascript"
+	src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/AdminSkinPreviewController-c1e40e7_https.js"
+	charset="UTF-8"></script>
+
+<link rel="stylesheet" href="../css/style.css">
+<script src="../js/common.js"></script>
+
+</head>
+<body id="index">
+
+
+
+	<style type="text/css">
+/* Default Type Selector */
+#banword_wrap *, #banword_wrap1 * {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: 돋움, Dotum, 굴림, Gulim, Helvetica, Sans-serif;
+	text-align: left;
+}
+
+#banword_wrap a, #banword_wrap1 a {
+	color: #004790;
+}
+
+#banword_wrap img, #banword_wrap1 img, #banword_wrap fieldset,
+	#banword_wrap1 fieldset {
+	border: none;
+}
+
+#banword_wrap legend, #banword_wrap1 legend {
+	display: none;
+}
+
+#banword_wrap em, #banword_wrap1 em {
+	font-style: normal;
+	color: #258102;
+}
+
+#banword_wrap strong, #banword_wrap1 strong {
+	color: #258102;
+}
+
+#banword_wrap li, #banword_wrap1 li {
+	list-style: none;
+}
+
+#banword_wrap h1, #banword_wrap1 h1 {
+	font: bold 13px 굴림, Gulim, 돋움, Dotum, Helvetica, Sans-serif;
+	color: #333;
+	padding: 11px 0 0 19px;
+	*padding: 12px 0 0 19px;
+}
+/* Layout */
+#banword_wrap {
+	position: absolute;
+	width: 410px;
+	_width /**/: 418px;
+	overflow: hidden;
+	border: 4px solid #777;
+	background: #fff;
+	display: none;
+	z-index: 200;
+}
+
+#banword_wrap1 {
+	position: relative;
+	width: 410px;
+	_width /**/: 418px;
+	height: 446px;
+	overflow: hidden;
+	border: 4px solid #777;
+	background: #fff;
+}
+
+#bw_content {
+	padding: 14px 0 28px 0;
+	margin: 0 19px 0 18px;
+}
+
+#bw_footer {
+	height: 8px;
+	_height: 8px;
+	text-align: center;
+}
+
+body:first-of-type #bw_footer {
+	height: 7px;
+}
+
+#bw_footer, x:-moz-any-link, x:default {
+	height: 7px;
+}
+
+*:first-child+html #bw_footer {
+	height: 8px;
+}
+
+#bw_btn_footer {
+	height: 46px;
+	_height /**/: 45px;
+	text-align: center;
+	background:
+		url(https://ssl.pstatic.net/static/common/popup/bg_not_available_common.gif)
+		no-repeat left 1px;
+	padding: 16px 0 0 0;
+	_padding /**/: 16px 0 20px 0;
+}
+
+/* Common */
+#bw_content .bw_bx1 {
+	border: 1px solid #f1f1f1;
+	margin: 0 1px 9px 2px;
+	height: 100px;
+	background: #f8f8f8;
+}
+
+#bw_content .bw_bx1_shadow {
+	position: relative;
+	padding: 13px 13px 12px 0;
+}
+
+#bw_content .bw_bx1_shadow strong {
+	color: #282828;
+	vertical-align: top;
+	margin-left: 13px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+#bw_content .bw_bx1_shadow a img {
+	vertical-align: middle;
+	margin: -1px 0 0 0;
+	*margin: -2px 0 0 0;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:10000) , not all and
+	(-webkit-min-device-pixel-ratio:0) {
+	#bw_content .bw_bx1_shadow a img {
+		margin: -1px !important;
+	}
+}
+
+body:first-of-type #bw_content .bw_bx1_shadow a img {
+	vertical-align: middle;
+	margin: -5px 0 0 0;
+}
+
+#bw_content .bw_bx1_shadow_in {
+	height: 35px;
+	_height /**/: 53px;
+	margin: 7px 0 0 13px;
+	_margin: 5px 0 0 13px;
+	padding: 8px 13px 7px 12px;
+	_padding: 9px 13px 8px 12px;
+	border: #e3e3e3 1px solid;
+	color: #666;
+	line-height: 20px;
+	background: #fff;
+	overflow: auto;
+}
+
+body:first-of-type #bw_content .bw_bx1_shadow_in {
+	height: 35px;
+	_height /**/: 53px;
+	margin: 5px 0 0 13px;
+	padding: 8px 13px 9px 12px;
+	border: #e3e3e3 1px solid;
+	color: #666;
+	line-height: 20px;
+	background: #fff;
+	overflow: auto;
+}
+
+#bw_content .bw_bx1_shadow_in, x:-moz-any-link, x:default {
+	height: 35px;
+	_height /**/: 53px;
+	margin: 5px 0 0 13px;
+	padding: 8px 13px 9px 12px;
+	border: #e3e3e3 1px solid;
+	color: #666;
+	line-height: 20px;
+	background: #fff;
+	overflow: auto;
+}
+
+*:first-child+html #bw_content .bw_bx1_shadow_in {
+	height: 33px;
+	_height /**/: 53px;
+	margin: 7px 0 0 13px;
+	padding: 8px 13px 9px 12px;
+	border: #e3e3e3 1px solid;
+	color: #666;
+	line-height: 20px;
+	background: #fff;
+	overflow: auto;
+}
+
+#bw_content .bw_bx2 {
+	border: 1px solid #eeeeee;
+	margin: 0 0 6px 3px;
+	background: #fbfbfb;
+	line-height: 18px;
+}
+
+#bw_content .bw_bx2 * {
+	color: #444444;
+}
+/* Content */
+#bw_content .bw_desc1 {
+	color: #444444;
+	font-weight: bold;
+	margin: 0 0 4px 0;
+	letter-spacing: -1px;
+}
+
+#bw_content .bw_desc2 {
+	color: #444444;
+	margin: 0 0 13px 0;
+}
+
+#bw_content .bw_desc3 {
+	position: relative;
+	color: #696968;
+	padding: 9px 2px 9px 34px;
+	font-size: 11px;
+	letter-spacing: -1px;
+	background:
+		url(https://ssl.pstatic.net/static/common/popup/bu_attention.gif)
+		no-repeat 13px 12px;
+}
+
+body:first-of-type #bw_content .bw_desc3 {
+	padding: 10px 2px 8px 34px;
+}
+
+#bw_content .bw_desc3, x:-moz-any-link, x:default {
+	padding: 10px 2px 8px 34px;
+}
+
+*:first-child+html #bw_content .bw_desc3 {
+	padding: 9px 2px 9px 34px;
+}
+
+#bw_content .bw_desc4 {
+	color: #6c6c6c;
+	margin: 10px 0 0 33px;
+	font-size: 11px;
+	letter-spacing: -1px;
+}
+
+body:first-of-type #bw_content .bw_desc4 {
+	margin: 9px 0 0 33px;
+}
+
+#bw_content .bw_desc4, x:-moz-any-link, x:default {
+	margin: 9px 0 0 33px;
+}
+
+*:first-child+html #bw_content .bw_desc4 {
+	margin: 10px 0 0 33px;
+}
+
+#bw_content .bw_desc4 a {
+	color: #258102;
+	font-size: 11px;
+}
+
+#bw_content .bw_desc5 {
+	color: #333333;
+	margin: 16px 0 10px 0;
+	_margin: 16px 0 10px 0;
+	padding: 0 0 0 1px;
+	letter-spacing: -1px;
+}
+
+body:first-of-type #bw_content .bw_desc5 {
+	color: #333333;
+	margin: 14px 0 12px 0;
+	padding: 0 0 0 1px;
+	letter-spacing: -1px;
+}
+
+#bw_content .bw_desc5, x:-moz-any-link, x:default {
+	color: #333333;
+	margin: 14px 0 12px 0;
+	padding: 0 0 0 1px;
+	letter-spacing: -1px;
+}
+
+*:first-child+html #bw_content .bw_desc5 {
+	color: #333333;
+	margin: 16px 0 12px 0;
+	_margin: 16px 0 10px 0;
+	padding: 0 0 0 1px;
+	letter-spacing: -1px;
+}
+
+#bw_content .bw_desc5 strong {
+	color: #333333;
+}
+
+#bw_content .bw_desc6 {
+	color: #333333;
+	margin: 21px 0 0 0;
+	padding: 0 0 5px 1px;
+	_padding: 0 0 3px 1px;
+	letter-spacing: -1px;
+	border-bottom: 1px solid #ececec;
+	line-height: 20px;
+}
+/*html:first-child #bw_content .bw_desc6 {margin:46px 0 0 0; padding:0 0 8px 1px;}
+body:first-of-type #bw_content .bw_desc6 {margin:26px 0 0 0; padding:0 0 8px 1px;}
+#bw_content .bw_desc6, x:-moz-any-link, x:default {margin:26px 0 0 0; padding:0 0 8px 1px;}
+*:first-child+html #bw_content .bw_desc6 { margin:27px 0 0 0; padding:0 0 9px 1px;}*/
+#bw_content .bw_desc6 strong {
+	color: #333333;
+}
+
+#bw_content .layer_content p {
+	font-size: 11px;
+	line-height: 14px;
+	color: #717171;
+	letter-spacing: -1px;
+}
+
+#bw_content .layer_content p.bw_orange {
+	margin-top: 5px;
+	color: #fd630a;
+}
+/* function button box */
+#bw_content .function_btn {
+	overflow: hidden;
+	height: 53px;
+	*height: 57px;
+	_height: 60px;
+	width: 362px;
+	margin: 14px 0 21px 6px;
+	padding-top: 4px;
+}
+
+body:first-of-type #bw_content .function_btn {
+	margin: 14px 0 20px 6px;
+}
+
+#bw_content .function_btn, x:-moz-any-link, x:default {
+	margin: 14px 0 20px 6px;
+}
+
+*:first-child+html #bw_content .function_btn {
+	margin: 14px 0 21px 6px;
+}
+
+#bw_content .function_btn .btn_wrap {
+	float: left;
+	width: 174px;
+	_width /**/: 181px;
+	padding: 0 0 0 7px;
+}
+
+#bw_content .function_btn .btn_wrap p {
+	margin-top: 5px;
+	font-size: 11px;
+	letter-spacing: -1px;
+	color: #696968;
+	background: url(https://ssl.pstatic.net/static/common/popup/bu_line.gif)
+		no-repeat right top;
+}
+
+body:first-of-type #bw_content .function_btn .btn_wrap p {
+	margin-top: 6px;
+}
+
+#bw_content .function_btn .btn_wrap p, x:-moz-any-link, x:default {
+	margin-top: 6px;
+}
+
+*:first-child+html #bw_content .function_btn .btn_wrap p {
+	margin-top: 5px;
+}
+
+#bw_content .function_btn .btn_wrap1 {
+	float: left;
+	width: 179px;
+	_width /**/: 181px;
+	text-align: center;
+	padding-left: 2px
+}
+
+#bw_content .function_btn .btn_wrap1 p {
+	margin-top: 5px;
+	font-size: 11px;
+	letter-spacing: -1px;
+	color: #696968;
+	text-align: left;
+	padding: 0 0 0 4px;
+}
+
+body:first-of-type #bw_content .function_btn .btn_wrap1 p {
+	margin-top: 6px;
+}
+
+#bw_content .function_btn .btn_wrap1 p, x:-moz-any-link, x:default {
+	margin-top: 6px;
+}
+
+*:first-child+html #bw_content .function_btn .btn_wrap1 p {
+	margin-top: 5px;
+}
+
+#bw_footer button.c_close {
+	position: absolute;
+	top: 7px;
+	right: 6px;
+	width: 18px;
+	height: 17px;
+	background: none;
+	border: none;
+}
+
+#bw_footer button.c_close, x:-moz-any-link, x:default {
+	top: 5px;
+	right: 8px;
+}
+
+*:first-child+html #bw_footer button.c_close {
+	top: 7px;
+	right: 6px;
+}
+
+#bw_btn_footer button {
+	width: 55px;
+	height: 27px;
+	text-align: center;
+	font-size: 12px;
+}
+
+@media all and (-webkit-min-device-pixel-ratio:10000) , not all and
+	(-webkit-min-device-pixel-ratio:0) {
+	#bw_btn_footer button {
+		padding-top: 6px;
+	}
+}
+
+#bw_btn_footer button.c_close {
+	position: absolute;
+	top: 7px;
+	right: 6px;
+	width: 18px;
+	height: 17px;
+	background: none;
+	border: none;
+}
+
+#bw_btn_footer button.c_close, x:-moz-any-link, x:default {
+	top: 5px;
+	right: 8px;
+}
+
+*:first-child+html #bw_btn_footer button.c_close {
+	top: 7px;
+	right: 6px;
+}
+</style>
+	<script type="text/javascript">
+		var wordCheck;
+		function setWordCheckObject(obj) {
+			wordCheck = obj;
+		}
+	</script>
+	<!-- 레이어팝업2 Document Size : 410*372 -->
+	<div id="banword_wrap">
+		<div id="bw_content">
+			<p class="bw_desc5">
+				작성하신 <strong><span id="bw_ugc_type"></span>에 이용자들의 신고가 많은
+					표현이 포함</strong>되어 있습니다.
+			</p>
+			<div class="bw_bx1">
+				<div class="bw_bx1_shadow">
+					<strong>신고가 많은 표현</strong>
+					<div id='bw_ban_words' class="bw_bx1_shadow_in"></div>
+				</div>
+			</div>
+			<div class="bw_bx2">
+				<p class="bw_desc3">
+					다른 표현을 사용해주시기 바랍니다.<br> 건전한 인터넷 문화 조성을 위해 회원님의 적극적인 협조를
+					부탁드립니다.
+				</p>
+			</div>
+			<p class="bw_desc4">
+				더 궁금하신 사항은 <a
+					href="https://help.naver.com/support/alias/blog/stats/stats1.naver"
+					target="_blank">고객센터</a>로 문의하시면 자세히 알려드리겠습니다.
+			</p>
+		</div>
+		<div id="bw_btn_footer">
+			<button type="button" onclick="if(wordCheck) wordCheck.hideDialog();">확인</button>
+			<button type="button" class="c_close"
+				onclick="if(wordCheck) wordCheck.hideDialog();">
+				<img
+					src="https://blogimgs.pstatic.net/static/common/popup/btn_close3.gif"
+					width="15" height="14" alt="닫기">
+			</button>
+		</div>
+	</div>
+	<div id="dimmed_layer"
+		style="z-index: 198; position: absolute; left: 0px; top: 0px; background: #000; opacity: 0.1; filter: alpha(opacity = 10); display: none;"></div>
+	<div id="dimmed_iframe_layer"
+		style="z-index: 197; position: absolute; left: 0px; top: 0px; background: #000; opacity: 0.1; filter: alpha(opacity = 10); display: none;">
+		<iframe
+			style="z-index: 198; width: 100%; height: 100%; position: absolute; left: 0px; top: 0px; background: #000; opacity: 0; filter: alpha(opacity = 0);"
+			title="ie6에서 사용되는 팝업시 비활성화 프레임"></iframe>
+	</div>
+
+	<div class="l__wrapper">
+		<div class="u_skip" id="u_skip">
+			<a href="#lnbMenu" onclick="adminMain.focusElement('lnbMenu')"
+				class="item _returnFalse">메뉴 바로가기</a> <a href="#content"
+				onclick="adminMain.focusElement('content')"
+				class="item _returnFalse">본문 바로가기</a>
+		</div>
+		<div id="header" class="l__header">
+
+
+
+
+
+			<div class="header__blog">
+				<div class="header__inner">
+					<h1 class="header__title">
+						<a href="#" class="header__title-blog">&nbsp;&nbsp;&nbsp;관리자
+							페이지</a>
+					</h1>
+				</div>
+			</div>
+
+			<script>
+				var gnb_service = "admin.blog";
+				var gnb_template = "gnb_utf8";
+				var gnb_url = 'https://blog.naver.com/kimsb0925';
+				var gnb_logout = gnb_url;
+				var gnb_brightness = 1;
+				var gnb_item_hide_option = 1 | 4 | 8 | 16;
+				var gnb_login_on_top = true;
+
+				var timeStamp = "20181210";
+				var gnb_src = "https://ssl.pstatic.net/static.gn/templates/gnb_utf8.nhn";
+				var scriptTag = document.createElement("script");
+				scriptTag.type = "text/javascript";
+				scriptTag.charset = "utf-8";
+				scriptTag.src = gnb_src + "?" + timeStamp;
+
+				scriptTag.onreadystatechange = function() {
+					if (scriptTag.readyState == "loaded"
+							|| scriptTag.readyState == "complete") {
+						scriptTag.onreadystatechange = null;
+						scriptTag.onload = null;
+						loadGNB();
+					}
+				};
+
+				scriptTag.onload = function() {
+					scriptTag.onreadystatechange = null;
+					loadGNB();
+				};
+
+				var headTag = document.getElementsByTagName('head')[0];
+				headTag.appendChild(scriptTag);
+
+				function loadGNB() {
+					getGNB();
+					setTimeout(
+							function() {
+								document.getElementById("admin-gnb").style.display = "block";
+							}, 500);
+				}
+
+				var doc = document.documentElement;
+				doc.setAttribute('data-useragent', navigator.userAgent);
+			</script>
+
+
+
+			<!-- 상단메뉴 -->
+			<div class="header__admin">
+				<div class="header__inner">
+					<div class="module__gnb" id="lnbMenu">
+						<ul class="gnb__list">
+							<li class="gnb__menu"><a href="user.html"
+								class="_nclk(gnb.setting) is-on">회원 관리</a></li>
+							<li class="gnb__menu"><a href="product.html"
+								class="_nclk(gnb.layout) ">상품 관리</a></li>
+							<li class="gnb__menu"><a href="order.html"
+								class="_nclk(gnb.menu) ">주문 관리</a></li>
+							<li class="gnb__menu"><a href="board.html"
+								class="_nclk(gnb.stats) ">게시판 관리</a></li>
+							<li class="gnb__menu"><a href="stats.html"
+								class="_nclk(gnb.stats) ">통계</a></li>
+						</ul>
+						<a href="#" role="button"
+							class="gnb__button-menu-all _showSiteMap _nclk(gnb.gohome)"
+							id="_siteMap">전체보기</a>
+					</div>
+					<div class="header__area-button">
+						<div class="header__layer-tutorial" id="easyMakeBlog">
+							<button type="button"
+								class="button__type1 button__type1--fill _openTutorialLayer _returnFalse"
+								onclick="clickcr(this,'gnb.easy','','',event);">로그아웃</button>
+						</div>
+						<button type="button"
+							class="button__type1 _lnbGoWirte _nclk(gnb.write)">상품 등록</button>
+					</div>
+				</div>
+			</div>
+			<script>
+				var gsBlogUrl = 'https://blog.naver.com';
+			</script>
+
+			<div class="header__dimmed" id="head_dimmed" style="display: none"></div>
+			<div class="module__layer-all-menu" id="siteMapLayer"
+				style="display: none">
+
+
+
+
+				<div class="layer-all-menu__inner">
+					<div class="layer-all-menu__depth1">
+						<strong class="layer-all-menu__title">회원 관리</strong>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">기본 정보 관리</strong>
+							<ul class="layer-all-menu__depth3">
+								<!-- [D] 선택 is-on -->
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/bloginfo"
+									id="all_userbasic_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.binfo)">블로그 정보</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/address"
+									id="all_address_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.baddress)">블로그
+										주소</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/profileinfo"
+									id="all_userprofile_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.pinfo)">프로필 정보</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">사생활 보호</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/bloginit"
+									id="all_userinit_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.preset)">블로그
+										초기화</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/activity"
+									id="all_useractivity_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.privacy)">방문집계
+										보호 설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/share"
+									id="all_contentsProtect_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.share)">콘텐츠 공유
+										설정</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">스팸 차단</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/userfilter/blacklist"
+									id="all_userblacklist_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.spamset)">스팸 차단
+										설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/userfilter/filteredlist"
+									id="all_filteredlist_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.blocklist)">차단된
+										글목록</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/authority"
+									id="all_authority_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.guest)">댓글·안부글
+										권한 </a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">열린이웃</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/buddy/manage"
+									id="all_buddylist_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.neimgr)">이웃·그룹
+										관리</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/buddy/me"
+									id="all_buddyme_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.neiyadd)">나를
+										추가한 이웃</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/buddy/relation"
+									id="all_buddyinvite_config_anchor"
+									class="layer-all-menu__item _nclk(hme_basic.neitadd)">서로이웃
+										맺기<span class="layer-all-menu__buddy">1</span>
+								</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="layer-all-menu__depth1">
+						<strong class="layer-all-menu__title">꾸미기 설정</strong>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">스킨</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/skin/list"
+									id="all_skin_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.skin)">스킨 선택</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/skin/personalskin"
+									id="all_skin_make_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.nskin)">내 스킨 관리</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">디자인 설정</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/LayoutSelect.nhn?blogId=kimsb0925"
+									id="all_layout_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.layout) ">레이아웃·위젯
+										설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/Remocon.nhn?blogId=kimsb0925&loadType=admin&Redirect=Remocon"
+									id="all_remocon_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.detail)">세부 디자인
+										설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/Remocon.nhn?blogId=kimsb0925&loadType=admin&Redirect=Remocon&SelectedMenu=title"
+									id="all_remocon_title_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.title)">타이틀 꾸미기</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/Remocon.nhn?blogId=kimsb0925&loadType=admin&Redirect=Remocon&SelectedMenu=poststyle"
+									id="all_remocon_poststyle_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.pstst)">글·댓글 스타일</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">아이템 설정</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/item/personacon"
+									id="all_personacon_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.person)">퍼스나콘</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/item/music"
+									id="all_music_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.music)">뮤직</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/item/font"
+									id="all_font_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.font)">폰트</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">네이버 페이·선물 내역</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="http://order.pay.naver.com/home?tabMenu=DIGITAL"
+									target="_blank"
+									class="layer-all-menu__item _nclk(hme_edit.npay)">페이 이용내역</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/item/gift"
+									id="all_gift_config_anchor"
+									class="layer-all-menu__item _nclk(hme_edit.gift)">아이템 선물내역</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="layer-all-menu__depth1">
+						<strong class="layer-all-menu__title">메뉴·글 관리</strong>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">메뉴 관리</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/topmenu"
+									id="all_menu_use_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.topmenu)">상단메뉴
+										설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/blog"
+									id="all_mylog_category_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.blog)">블로그 </a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/memo"
+									id="all_memo_category_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.memo)">메모게시판</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/prologue"
+									id="all_prologue_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.prologue)">프롤로그</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">글배달·이벤트</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/mrblog"
+									id="all_mrblog_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.mrb)">블로그씨 질문</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/event"
+									id="all_event_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.event)">이벤트</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">글 관리</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/userfilter/commentlist"
+									id="all_commentlist_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.reply)">댓글</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/tag"
+									id="all_tag_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.tag)">태그</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/postexport"
+									id="all_postexport_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.pstsave)">글 저장</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">플러그인·연동 관리</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/api"
+									id="all_api_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.api)">글쓰기 API 설정</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/greenreview"
+									id="all_greenreview_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.green)">그린리뷰 배너
+										설정</a></li>
+								<li><a href="http://adpost.naver.com/main.nhn"
+									target="_blank"
+									class="layer-all-menu__item _nclk(hme_menu.adpost)">애드포스트</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">퀵에디터 관리</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/config/quickposting"
+									id="all_quickposting_config_anchor"
+									class="layer-all-menu__item _nclk(hme_menu.qeset)">퀵에디터 설정</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="layer-all-menu__depth1">
+						<strong class="layer-all-menu__title">내 블로그 통계</strong>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">오늘</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/today"
+									id="all_stat_today"
+									class="layer-all-menu__item _nclk(hme_stats.today)">일간 현황</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">방문 분석</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/visit_pv"
+									id="all_stat_visit_pv"
+									class="layer-all-menu__item _nclk(hme_stats.pv)">조회수</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/uv"
+									id="all_stat_uv"
+									class="layer-all-menu__item _nclk(hme_stats.uv)">순방문자수</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/visit"
+									id="all_stat_visit"
+									class="layer-all-menu__item _nclk(hme_stats.visit)">방문 횟수</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/frequency"
+									id="all_stat_frequency"
+									class="layer-all-menu__item _nclk(hme_stats.avgvisit)">평균
+										방문 횟수</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/retention"
+									id="all_stat_retention"
+									class="layer-all-menu__item _nclk(hme_stats.retention)">재방문율</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/averageDuration"
+									id="all_stat_averageDuration"
+									class="layer-all-menu__item _nclk(hme_stats.avgtime)">평균 사용
+										시간</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">사용자 분석</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/referer"
+									id="all_stat_referer"
+									class="layer-all-menu__item _nclk(hme_stats.referer)">유입분석</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/hour_cv"
+									id="all_stat_hour_cv"
+									class="layer-all-menu__item _nclk(hme_stats.hourlypv)">시간대
+										분석</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/demo"
+									id="all_stat_demo"
+									class="layer-all-menu__item _nclk(hme_stats.demo)">성별·연령별
+										분포</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/device"
+									id="all_stat_device"
+									class="layer-all-menu__item _nclk(hme_stats.device">기기별 분포</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/relationDist"
+									id="all_stat_relationDist"
+									class="layer-all-menu__item _nclk(hme_stats.relvisit)">이웃
+										방문 현황</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/relationDelta"
+									id="all_stat_relationDelta"
+									class="layer-all-menu__item _nclk(hme_stats.reldiff)">이웃
+										증감수</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/relationDemo"
+									id="all_stat_relationDemo"
+									class="layer-all-menu__item _nclk(hme_stats.reldiffdemo)">이웃
+										증감 분석</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/country"
+									id="all_stat_country"
+									class="layer-all-menu__item _nclk(hme_stats.nation)">국가별 분포</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<strong class="layer-all-menu__subtitle">순위</strong>
+							<ul class="layer-all-menu__depth3">
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/rank_pv"
+									id="all_stat_rank_pv"
+									class="layer-all-menu__item _nclk(hme_rank.pv)">조회수 순위</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/rank_like"
+									id="all_stat_rank_like"
+									class="layer-all-menu__item _nclk(hme_rank.sym)">공감수 순위</a></li>
+								<li><a
+									href="https://admin.blog.naver.com/kimsb0925/stat/rank_comment"
+									id="all_stat_rank_comment"
+									class="layer-all-menu__item _nclk(hme_rank.reply)">댓글수 순위</a></li>
+							</ul>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<a
+								href="https://admin.blog.naver.com/kimsb0925/stat/average_upperGroup"
+								id="all_stat_average_upperGroup"
+								class="layer-all-menu__subtitle _nclk(hme_blogscale)">블로그 평균
+								데이터</a>
+						</div>
+						<div class="layer-all-menu__depth2">
+							<a href="https://admin.blog.naver.com/kimsb0925/stat/download"
+								id="all_stat_download"
+								class="layer-all-menu__subtitle _nclk(hme_download)">지표 다운로드</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="l__container">
+			<div class="container__inner">
+				<div class="l__aside">
+
+					<div class="module__lnb">
+						<div class="lnb__local-menu" id="nav">
+							<div class="lnb__depth1">
+								<div class="lnb__title">회원 관리</div>
+								<ul class="lnb__depth2">
+									<li><a
+										href="javascript:adminMain.GotoPage('https://admin.blog.naver.com/AdminUserBasic.nhn',false);"
+										id="userbasic_config_anchor"
+										class="lnb__item _nclk(bas_menu.binfo) _param(111)"> 회원정보
+											조회 </a></li>
+									<li><a
+										href="javascript:adminMain.GotoPage('https://admin.blog.naver.com/AdminAddress.nhn',false);"
+										id="address_config_anchor"
+										class="lnb__item _nclk(bas_menu.badd)"> 회원가입/탈퇴 관리 </a></li>
+									<li><a
+										href="javascript:adminMain.GotoPage('https://admin.blog.naver.com/AdminUserBasicProfile.nhn?m=updateForm',false);"
+										id="userprofile_config_anchor"
+										class="lnb__item _nclk(bas_menu.pinfo)"> 주문회원 조회 </a></li>
+									<li><a
+										href="javascript:adminMain.GotoPage('https://admin.blog.naver.com/AdminUserBasicProfile.nhn?m=updateForm',false);"
+										id="userprofile_config_anchor"
+										class="lnb__item _nclk(bas_menu.pinfo)"> 구매액 상위 회원 조회 </a></li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div id="content" class="l__content content"
+					style="min-height: 770px">
+					adsfadsfadsfadfs
+
+					<iframe ID="papermain" NAME="papermain" ALLOWTRANSPARENCY="true"
+						frameborder="0" width="728" height="579" scrolling="no"
+						src="https://admin.blog.naver.com/AdminUserBasic.nhn?blogId=kimsb0925&proxyReferer=https%3A%2F%2Fblog.naver.com%2FPostList.nhn%3FblogId%3Dkimsb0925%26widgetTypeCall%3Dtrue%26topReferer%3Dhttps%253A%252F%252Fwww.naver.com%252F%26directAccess%3Dtrue"
+						onload="adminMain.resizeIfr(this, 579);"
+						class="content_iframe l__content-iframe" title="본문영역"></iframe>
+
+					<div ID="MainDiv" NAME="MainDiv"
+						style="width: 590px; overflow: auto; height: 30px"
+						class="bscrollbar" onscroll="adminMain.Scrollon(this.scrollLeft);"></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer" class="l__footer">
+
+
+			<div class="footer__inner">
+				<div class="footer__menu">
+					<a href="http://www.naver.com/rules/service.html" target="_blank"
+						class="footer__menu-item">이용약관</a> <a
+						href="http://blog.naver.com/post/blog_use.htm" target="_blank"
+						class="footer__menu-item">블로그 운영원칙</a> <a
+						href="http://www.naver.com/rules/privacy.html" target="_blank"
+						class="footer__menu-item"><strong
+						class="footer__menu-highlight">개인정보처리방침</strong></a> <a
+						href="http://www.naver.com/rules/disclaimer.html" target="_blank"
+						class="footer__menu-item">책임의 한계와 법적고지</a> <a
+						href="javascript:adminMain.showPostProtection()"
+						class="footer__menu-item __showBlogPostProtection">글 권리 보호하기</a> <a
+						href="http://inoti.naver.com/inoti/main.nhn" target="_blank"
+						class="footer__menu-item">게시중단요청서비스</a>
+				</div>
+				<address class="footer__address">
+					<i class="sp-admin sp-admin__logo-naver-footer"></i> Copyright
+					&copy; <a href="http://www.navercorp.com/" target="_blank">NAVER
+						Corp.</a> All Rights Reserved.
+				</address>
+			</div>
+
+		</div>
+
+	</div>
+	<form name="loginForm" method="post"
+		action="https://nid.naver.com/nidlogin.login?mode=form">
+		<input type="hidden" name="url" value="" /> <input type="hidden"
+			name="categoryNo" value="" />
+	</form>
+
+
+
+
+
+	<link rel="stylesheet"
+		href="https://ssl.pstatic.net/t.static.blog/mylog/versioning//css/admin/LayerdAlert-9082ce7_https.css"
+		type="text/css"></link>
+
+	<div id="layerAlert"
+		style="z-index: 199; top: 100px; left: 414px; display: none;"
+		class="ly_alert">
+		<strong id="resultMsg">성공적으로 반영되었습니다.</strong>
+		<div class="ly_btns">
+			<a href="#" id="_btnConfirm" class="_btnConfirm _returnFalse"><img
+				height="26" width="45" alt="확인"
+				src="https://blogimgs.pstatic.net/nblog/admin50/btn_cfm.gif"></a>
+		</div>
+		<a class="ly_clse closelayer" href="#" id="_closeLayer"><img
+			height="13" width="13" alt="닫기"
+			src="https://blogimgs.pstatic.net/nblog/admin50/btn_clse_ly.gif"></a>
+	</div>
+
+	<div id="layerLoadingBar" class="layerpopup"
+		style="z-index: 199; top: 100px; left: 414px; display: none;">
+		<div>
+			<!-- dev -->
+			<table border="0" cellspacing="0" height="130" width="330"
+				role='presentation'>
+				<tbody>
+					<tr>
+						<td align="center">
+							<table align="center" border="0" cellpadding="0" cellspacing="0"
+								width="330" role='presentation'>
+								<tbody>
+									<tr>
+										<td><img
+											src="https://blogimgs.pstatic.net/nblog/admin/box13_l_t.gif"
+											height="6" width="6" /></td>
+										<td
+											background="https://blogimgs.pstatic.net/nblog/admin/box13_t_bg.gif"
+											width="100%"></td>
+										<td><img
+											src="https://blogimgs.pstatic.net/nblog/admin/box13_r_t.gif"
+											height="6" width="6" /></td>
+									</tr>
+									<tr>
+										<td
+											background="https://blogimgs.pstatic.net/nblog/admin/box13_l_bg.gif"></td>
+										<td style="padding: 20px;" align="center" bgcolor="#f4f4f4">
+											<table border="0" cellpadding="0" cellspacing="0"
+												role='presentation'>
+												<tbody>
+													<tr>
+														<td class="gray05 ln15" align="center"><b>저장 중<br />잠시만
+																기다려 주세요.<br />
+														</b> <img
+															src="https://blogimgs.pstatic.net/nblog/admin/bar.gif"
+															style="margin-top: 15px;" height="17" width="252"
+															alt="로딩중" /></td>
+													</tr>
+												</tbody>
+											</table>
+										</td>
+										<td
+											background="https://blogimgs.pstatic.net/nblog/admin/box13_r_bg.gif" /></td>
+									</tr>
+									<tr>
+										<td><img
+											src="https://blogimgs.pstatic.net/nblog/admin/box13_l_b.gif"
+											height="6" width="6" /></td>
+										<td
+											background="https://blogimgs.pstatic.net/nblog/admin/box13_b_bg.gif"></td>
+										<td><img
+											src="https://blogimgs.pstatic.net/nblog/admin/box13_r_b.gif"
+											height="6" width="6" /></td>
+									</tr>
+								</tbody>
+							</table> <br />
+						<br />
+						<br />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- //dev -->
+		</div>
+
+	</div>
+
+	<script type="text/javascript"
+		src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/js/mylog/nblog_common-b8b5998_https.js"></script>
+	<script type="text/javascript"
+		src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//js/admin/LayeredAlert-7c2c1d6_https.js"
+		charset="utf-8"></script>
+
+	<link rel="stylesheet"
+		href=https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/css/ip_layer_1-72b077e_https.css
+		type="text/css">
+	<script type="text/javascript"
+		src="https://ssl.pstatic.net/t.static.blog/mylog/versioning//common/js/global/RemoveSubDomain-dea9950_https.js"></script>
+	<script type="text/javascript">
+		var svcurl = "/common/checklogin/checkloginForJindo1.jsp";
+		var userid = "kimsb0925";
+		var targetWindow;
+		var callBack = null;
+		function openCheckLayer(win) {
+			targetWindow = win;
+			document.getElementById("layeredframe").src = svcurl;
+		}
+		function openLayeredLogin() {
+			try {
+				document.getElementById("dimmed_layer").style.width = getDocWidth()
+						+ "px";
+				document.getElementById("dimmed_layer").style.height = getDocHeight()
+						+ "px";
+				document.getElementById("dimmed_layer").style.display = "";
+				document.getElementById("loginstart_layer").style.display = "";
+				document.getElementById("layeredframe").src = "https://nid.naver.com/nidlogin.login?mode=form&svctype=40960&id="
+						+ userid
+						+ "&url=https://admin.blog.naver.com/common/checklogin/closeLayeredLogin.html";
+			} catch (e) {
+			}
+		}
+		function openCheckLayerWithCallback(win, calb) {
+			callBack = calb;
+			openCheckLayer(win);
+		}
+		function closeLayeredLogin() {
+			document.getElementById("dimmed_layer").style.display = "none";
+			document.getElementById("loginstart_layer").style.display = "none";
+			document.getElementById("layeredframe").src = "";
+		}
+		function getDocHeight() {
+			if (document.body)
+				return document.body.scrollHeight;
+			else
+				return document.documentElement.scrollHeight;
+		}
+		function getDocWidth() {
+			if (document.body)
+				return document.body.scrollWidth;
+			else
+				return document.documentElement.scrollWidth;
+		}
+	</script>
+
+	<div id="skin_preview_layer" class="dimmed skin_preview"
+		aria-hidden="true"></div>
+	<div id="wrap_skin_layer" class="wrap_layer_skin_preview"
+		style="display: none">
+		<div class="area_layer_skin_preview">
+			<div class="layer_skin_preview" id="layer_skin_preview">
+				<div class="layer_header">
+					<div class="desc">
+						<strong class="title">스킨 미리보기</strong>
+						<p id="skinPreviewLayerText" class="text"></p>
+					</div>
+					<div class="area_btn">
+						<button class="btn _layoutSettingForPreview">레이아웃 변경</button>
+						<button class="btn _detailDesignSettingForPreview">세부 디자인
+							변경</button>
+						<button class="btn btn_apply _skinSaveForPreview">바로 적용</button>
+					</div>
+				</div>
+				<div class="layer_content" id="layer_content">
+					<iframe id="skin_preview_layer_content" tabindex="-1"
+						allowtransparency="true" frameborder="0" src="" title="스킨 미리보기 화면"
+						style="width: 100%; height: 100%"></iframe>
+				</div>
+				<button class="btn_close_layer _closeSkinPreviewLayer">
+					<span class="blind">스킨 미리보기 레이어 닫기</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var isRequestFromIPad = false;
+		var nsc = "blog.admin";
+		var gsAdminDomain = "https://admin.blog.naver.com";
+		var skinPreviewGuide = {
+			type0 : "레이아웃이나 세부 디자인을 변경해 다른 느낌의 스킨을 만들 수 있어요.",
+			type1 : "<a href=\"#\" class=\"link_text _goRemoconSk _nclk(edt_skinprv.txtbc)\">스킨배경의 하단 컬러</a>를 변경해 나만의 특별한 스킨으로 만들어 보세요.",
+			type2 : "<a href=\"#\" class=\"link_text _goRemoconTitle _nclk(edt_skinprv.txttbc)\">타이틀 배경 컬러</a>를 내 블로그에 맞게 변경할 수 있어요.",
+			type3 : "스킨 배경에 다양한 <a href=\"#\" class=\"link_text _goRemoconSk _nclk(edt_skinprv.txtfrimg)\">무료 이미지</a>를 활용해 보세요.",
+			type4 : "<a href=\"#\" class=\"link_text _goRemoconProfile _nclk(edt_skinprv.txtpc)\">프로필 컬러</a>를 변경해 나만의 개성있는 스킨을 만들어 보세요."
+		};
+
+		window.initSkinPreviewController = (function() {
+			window.skinPreviewController;
+			return function(fnGoLayout, fnGoRemocon, fnApplySkin, skinId,
+					skinType) {
+				if (!window.skinPreviewController) {
+					window.skinPreviewController = new AdminSkinPreviewController();
+				}
+				window.skinPreviewController.start(fnGoLayout, fnGoRemocon,
+						fnApplySkin, skinId, skinType);
+				return window.skinPreviewController;
+			}
+		})();
+	</script>
+	<script type="text/javascript"
+		src="https://ssl.pstatic.net/t.static.blog/mylog/versioning/AdminMainAll-1163601477_https.js"
+		charset="UTF-8"></script>
+
+
+
+</body>
+</html>

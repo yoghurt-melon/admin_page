@@ -1,0 +1,28 @@
+.header__title {
+    background-color: #1c7ed6
+}
+.header__blog {
+    background-color: #1c7ed6;
+}
+.gnb__menu>a:hover, .gnb__menu>a.is-on {
+    color: #1c7ed6;
+}
+.gnb__menu>a:hover:after, .gnb__menu>a.is-on:after {
+    background: #1c7ed6;
+}
+.gnb__button-menu-all.is-on {
+    font-weight: 700;
+    color: #1c7ed6;
+}
+.gnb__button-menu-all:hover {
+    color: #1c7ed6;
+}
+
+.button__type1--fill {
+    background: #1c7ed6;
+    color: #1c7ed6;
+    color: #ffffff;
+}
+.button__type1--fill {
+    border-color: #1c7ed6;
+}

@@ -1,0 +1,12 @@
+.header__title {
+    background-color: #1c7ed6
+}
+.header__blog {
+    background-color: #1c7ed6;
+}
+.gnb__menu>a:hover, .gnb__menu>a.is-on {
+    color: #1c7ed6;
+}
+.gnb__menu>a:hover:after, .gnb__menu>a.is-on:after {
+    background: #1c7ed6;
+}
