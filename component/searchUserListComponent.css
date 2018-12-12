@@ -1,0 +1,26 @@
+table.searchUserListTable {
+    width: 100%;
+    border-top: 2px solid #4a4a4a;
+    border-bottom: 1px solid #9b9b9b;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+table.searchUserListTable th {
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    text-align: left;
+    height: 44px;
+    background-color: #f5f4f4;
+}
+
+table.searchUserListTable tr:nth-child(2) td {
+    border-top: 1px solid #9b9b9b;
+}
+
+table.searchUserListTable td {
+    font-size: 13px;
+    height: 44px;
+    border-top: 1px solid #eeeeef;
+}

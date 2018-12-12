@@ -1,0 +1,50 @@
+body {
+    font: 0.75em "돋움",Dotum,AppleGothic,sans-serif;
+}
+h1 {
+    font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    height: 38px;
+    margin-top: 9px;
+    margin: 18px 0 10px;
+    color: #1c1c1c;
+    border-bottom: 2px solid #e7e7e7;
+}
+.searchOptionTable, table {
+    table-layout: fixed;
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table.searchOptionTable th {
+    font-weight: normal;
+    padding: 9px 9px 7px;
+    text-align: left;
+    background-color: #f5f4f4
+}
+table.searchOptionTable td {
+    padding: 9px 9px 7px;
+}
+table.searchOptionTable td select {
+    height: 24px;
+    border: 1px solid #a7a7a7;
+}
+table.searchOptionTable td input {
+    height: 22px;
+    padding: 0 5px;
+    border: 1px solid #a7a7a7;
+}
+.searchButton {
+    text-align: center;
+}
+.searchTableComponent .searchButton button {
+    background: #1c7ed6;
+    color: white;
+    border: 0;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
